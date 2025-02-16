@@ -1,51 +1,49 @@
-# 🚀 Hyperledger Fabric Asset Management System with ABAC
+# 🚀 Hyperledger Fabric Asset Management System with ABAC  
 
-This project is a **Hyperledger Fabric-based asset management system** that enforces **Attribute-Based Access Control (ABAC)**. It allows users with different roles (`admin`, `user`, `auditor`) to interact with assets on the blockchain securely.
-
----
-
-## 📌 Features
-- **Admins** can create, update, and delete assets.
-- **Users** can view only their own assets.
-- **Auditors** can query and view all assets.
-- Implements **ABAC (Attribute-Based Access Control)** using user identity certificates.
-
----
-## 🔐 ABAC Implementation
-The system uses **Attribute-Based Access Control (ABAC)** to enforce role-based permissions. Each user's role is embedded in their X.509 certificate, and the chaincode validates access based on these attributes.
+This project is a **Hyperledger Fabric-based asset management system** that enforces **Attribute-Based Access Control (ABAC)**. It allows users with different roles (**Admin, User, Auditor**) to interact with assets on the blockchain securely.  
 
 ---
 
-## 🚀 Fabric Client SDK & Wallet (Client Application)
-The Fabric Client SDK (fabric-network) allows applications to interact with Hyperledger Fabric networks by:
-
-Submitting transactions
-Querying the blockchain
-Managing user identities securely
-The Wallet API is used to store user identities and credentials securely. It enables role-based access control by managing certificates and private keys.
-
----
-
-## ⚡ Tech Stack
-- **Backend:** Node.js + Express
-- **Blockchain:** Hyperledger Fabric (Fabric v2.x)
-- **Smart Contract:** Chaincode (Fabric Contract API)
-- **Wallet & Identity Management:** Fabric CA (Certificate Authority)
+## 📌 Features  
+- ✅ **Admins** can create, update, and delete assets.  
+- ✅ **Users** can view only their own assets.  
+- ✅ **Auditors** can query and view all assets.  
+- ✅ Implements **ABAC (Attribute-Based Access Control)** using user identity certificates.  
+- ✅ Provides **a REST API** for interacting with Fabric via **Node.js & Express.js**.  
 
 ---
 
-## 🛠️ Setup Instructions
+## 🛠 Project Architecture  
 
-### **1️⃣ Prerequisites**
-Before running this project, ensure you have the following installed:
-- **Node.js** (v14+ recommended)
-- **Docker & Docker Compose**
-- **Hyperledger Fabric binaries and samples** (`fabric-samples`)
-- **Fabric CA client** (for identity management)
+### 🔹 Network Components  
+- **2 Organizations** (`Org1`, `Org2`)  
+- **2 Peers per Organization**  
+- **1 Orderer** (Raft Consensus)  
+- **1 Channel** (`simplyfichannel`)  
+- **Fabric CA** for Identity Management  
+
+### 🔹 Smart Contract (Chaincode) Functionalities  
+- `CreateAsset(assetID, owner, value)` - Admin creates an asset.  
+- `ReadAsset(assetID)` - Users/Auditors read asset details.  
+- `UpdateAsset(assetID, newValue, newOwner)` - Admin updates an asset.  
+- `DeleteAsset(assetID)` - Admin deletes an asset.  
+- `GetAllAssets()` - Auditors can retrieve all assets.  
 
 ---
 
-### **2️⃣ Clone the Repository**
+## 📂 Directory Structure  
 ```bash
-git clone https://github.com/Manufg07/Simplyfiii.git
-
+├── api/                  # Node.js REST API
+│   ├── server.js         # Express.js server
+│   ├── routes.js         # API routes
+│   ├── fabricClient.js   # Fabric network interaction logic
+├── chaincode/            # Chaincode for asset management
+│   ├── assetContract.js  # Smart contract (Node.js)
+├── config/               # Configuration files
+│   ├── connection-profile/
+│   │   ├── org1.json     # Org1 connection profile
+│   │   ├── org2.json     # Org2 connection profile
+├── network/              # Fabric network setup
+│   ├── docker-compose/   # Docker setup
+│   ├── scripts/          # Shell scripts for automation
+└── README.md             # Project documentation
