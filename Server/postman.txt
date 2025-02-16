@@ -1,0 +1,34 @@
+//create an asset
+
+http://localhost:5000/assets
+
+{
+    "assetID": "asset1",
+    "owner": "Alice",
+    "value": "1000"
+  }
+
+
+//Read an asset by id
+
+http://localhost:5000/assets/asset1
+
+
+// get all assets
+
+http://localhost:5000/assets
+
+
+//update an asset
+
+http://localhost:5000/assets/asset1
+
+{
+  "newValue": "1500",
+  "newOwner": "Bob"
+}
+
+
+//delete an asset
+
+http://localhost:5000/assets/asset1
