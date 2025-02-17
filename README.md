@@ -5,7 +5,7 @@ This project is a **Hyperledger Fabric-based asset management system** that enfo
 ---
 
 ## 📌 Features  
-- ✅ **Admins** can create, update, and delete assets.  
+- ✅ **Admins** can create, update, and delete  assets.  
 - ✅ **Users** can view only their own assets.  
 - ✅ **Auditors** can query and view all assets.  
 - ✅ Implements **ABAC (Attribute-Based Access Control)** using user identity certificates.  
